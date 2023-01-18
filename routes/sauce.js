@@ -1,7 +1,12 @@
 import express from "express";
-import { getSauceList } from "../controllers/sauce.js";
+import multer from "../middlewares/multer-config.js";
+import { getSauceList, putSauceList, postSauceList, deleteSauceList } from "../controllers/sauce.js";
+
 
 const router = express.Router();
 router.get('/', getSauceList)
+router.post('/', multer, postSauceList)
+router.put('/', multer, putSauceList)
+router.delete('/', deleteSauceList)
 
 export default router;
