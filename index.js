@@ -16,8 +16,10 @@ app.use(express.json())
 app.use(cors())
 app.use("/api/auth", userRouter)
 app.use("/api/sauces", auth, sauceRouter)
+app.use("/images", express.static("images"))
 
 await mongoose.connect(process.env.MONGO_URL)
 
 app.listen(3000);
+
 
