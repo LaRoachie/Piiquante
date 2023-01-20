@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken'
 import { User } from "../models/user.js";
 
-
+// SIGNUP
 export async function signUp(req, res) {
     try {
         const user = new User({
