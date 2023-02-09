@@ -108,6 +108,7 @@ export async function deleteSauce(req, res) {
 
 // Like/Dislike d'une sauce
 export async function postSauceLiked(req, res) {
+    try {
     const sauce = await Sauce.findOne({
         _id: req.params.id,
     })
@@ -125,6 +126,13 @@ export async function postSauceLiked(req, res) {
         sauce.usersDisliked.push(userId)
     }
     await sauce.save()
+    res.status(201).json({message: "Done !"})
+    } 
+    catch (error) {
+        res.status(500).json({
+            error: error
+        })
+    }
 }
 
 
